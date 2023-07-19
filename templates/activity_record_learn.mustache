@@ -1,0 +1,238 @@
+<button onclick="window.location.href='../../my/index.php'" class="btn btn-primary" id="activityrecord_btm">Back to menu</button>
+<h2 class='text-center'><b>{{fullname}}'s Activity Records</b></h2>
+<h2 class='text-center'><b>{{coursename}}</b></h2>
+<div>
+    <h3>Records</h3>
+    <ol>
+        {{#records}}
+            <li class='d-flex mb-2'>
+                <h4 class='mr-1'>{{0}}</h4>
+                <button class='btn btn-primary mr-1 mb-1' onclick="getrecord({{1}})">Edit</button>
+                <button class='btn btn-primary mr-1 mb-1' onclick="window.open('./classes/pdf/learn_arpdf.php?id={{1}}', '_blank');window.open('./classes/pdf/learn_employercomment_pdf.php?id={{1}}', '_blank');">PDF</button>
+            </li>
+        {{/records}}
+    </ol>
+    <h2 style="display:none;" class="text-error" id="edit_error"></h2>
+<div>
+<div id="activityrecord_content_div" style="display: none;">
+    <h2 class='text-center' id="activityrecord_title">Edit Activity Record</h2>
+    <form action="" id="activityrecord_form">
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>Apprentice*</th>
+                    <th class='text-center'>Review Date*</th>
+                    <th class='text-center'>Standard*</th>
+                    <th class='text-center'>Employer or Store*</th>
+                    <th class='text-center'>Coach*</th>
+                    <th class='text-center'>Manager/Mentor*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input class='w-100' type='text' id="apprentice" disabled></td>
+                    <td><input class='w-100' type='date' id="reviewdate" disabled></td>
+                    <td><input class='w-100' type='text' id="standard" disabled></td>
+                    <td><input class='w-100' type='text' id="eors" disabled></td>
+                    <td><input class='w-100' type='text' id="coach" disabled></td>
+                    <td><input class='w-100' type='text' id="morm" disabled></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th colspan='6' class='text-center'>Summary of progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Course % Progress to date*</th>
+                    <td><input class='w-100' type='number' id="coursep" step='1' disabled></td>
+                    <th>Course % Expected Progress according to Training Plan*</th>
+                    <td><input class='w-100' type='number' id="courseep" step='1' disabled></td>
+                    <th>Comments*</th>
+                    <td class='w-50'><textarea class='w-100' id="coursecomment" disabled></textarea></td>
+                </tr>
+                <tr>
+                    <th>OTJH Completed*</th>
+                    <td><input class='w-100' type='number' id="otjhc" step='1' disabled></td>
+                    <th>Expected OTJH as per Training Plan*</th>
+                    <td><input class='w-100' type='number' id="otjhe" step='1' disabled></td>
+                    <th>Comments*</th>
+                    <td class='w-50'><textarea class='w-100' id="otjhcomment" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>E & D, H & S, Safeguarding & Learner Welfare (LDC to check understanding & link to a vocational context. Any issues must be actioned accordingly)*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><textarea class='w-100' id="safeguard" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>Recap on actions from last month</th>
+                    <th class='text-center'>What impact has this had in your current job role/situation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class='w-50'><textarea class='w-100' id="recap" disabled></textarea></td>
+                    <td class='w-50'><textarea class='w-100' id="recapimpact" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>Details of Teaching & Learning activity undertaken today (include reference to modules and knowledge, skills & behaviours)*</th>
+                    <th class='text-center'>Modules and K,S,B*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class='w-75'><textarea class='w-100' id="details" disabled></textarea></td>
+                    <td class='w-25'><textarea class='w-100' id="detailsmod" disabled></textarea></td>                
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>What impact will this have in your job role/situation*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><textarea class='w-100' id="impact" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th colspan='3' class='text-center'>Functional Skills Progress</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th class='text-center'>Learning today*</th>
+                    <th class='text-center'>Target for next visit*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th class='text-center'>Math*</th>
+                    <td><textarea class='w-100' id="mathtoday" disabled></textarea></td>
+                    <td><textarea class='w-100' id="mathnext" disabled></textarea></td>
+                </tr>
+                <tr>
+                    <th class='text-center'>English*</th>
+                    <td><textarea class='w-100' id="engtoday" disabled></textarea></td>
+                    <td><textarea class='w-100' id="engnext" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>ALN (Additional Learner Needs) Suppot delivered today*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><textarea class='w-100' id="aln" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>Agreed actions & future skills development activity*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><textarea class='w-100' id="agreedact" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>Coach/Tutor Feedback*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><textarea class='w-100' id="coachfeed" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>Apprentice Comments regarding their learning journey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="td_apprencom"><textarea class='w-100' id="apprencom" required></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <tr>
+                <th class='w-25'>Employer comment on progress*</th>
+                <td class='w-75'>
+                    <h4>Choose a PDF</h4>
+                    <input type='file' name='file' class='w-100' id="file" disabled>
+                    <iframe id="filesrc" src="" style="height:450px;" class='w-100' style="display:none;"></iframe>
+                </td>
+            </tr>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <tr>
+                <th class='w-25'>Date & time of next planned review</th>
+                <td id="td_nextdate">
+                    <input type="datetime-local" id="nextdate" disabled>
+                </td>
+            </tr>
+            <tr>
+                <th class='w-25'>Remote / Face to Face</th>
+                <td id="td_remotef2f">
+                    <select id="remotef2f" disabled>
+                        <option id="remotef2f_default" value="" selected disabled>Remote/Face to Face</option>
+                        <option id="remotef2f_f2f" value="f2f">Face to Face</option>
+                        <option id="remotef2f_remote" value="remote">Remote</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class='d-flex' id="ar_sign_div">
+            <div class="mr-1">
+                <p>Learner Signature</p>
+                <button class='btn btn-primary mb-2' type='button' id="learn_signed_btn">Add Signature</button>
+                <img width="250px" height="100px" id="learnsignimg" style="display:none;">
+                <p id="td_learnsigndate"><input type='date' name='learnsigndate' id="learnsigndate" style="display:none;"></p>
+            </div>
+            <div>
+                <p>Coach Signature</p>
+                <img width="250px" height="100px" id="coachsignimg" style="display:none;">
+                <p><input type='date' name='coachsigndate' id="coachsigndate" style="display:none;" disabled></p>
+            </div>
+        </div>
+        <h2 style="display:none;" class="text-error" id="ar_error"></h2>
+        <button class='w-100 btn btn-primary' type="submit">Submit</button>
+    </form>
+    <script src='./classes/js/learn_editrecord.js' defer></script>
+    <script src='./classes/js/learnsign.js' defer></script>
+</div>
+<script src='./classes/js/learn_getrecord.js' defer></script>
