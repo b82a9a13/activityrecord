@@ -8,7 +8,7 @@ $cid = $_GET['cid'];
 $uid = $_GET['uid'];
 $id = $_GET['id'];
 $pdf = $_GET['pdf'];
-if(!preg_match("/^[0-9]*$/", $cid) || empty($cid)){
+if(!preg_match("/^[0-9]*$/", $id) || empty($id)){
     exit();
 } elseif(!preg_match("/^[0-9]*$/", $uid) || empty($uid)){
     exit();
