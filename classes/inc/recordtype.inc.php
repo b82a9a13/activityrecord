@@ -23,7 +23,7 @@ if($error){
                 ['eors', $defaults[1]],
                 ['coach', $defaults[2]],
                 ['morm', $defaults[3]],
-                ['ar_form_script', './classes/js/newrecord.js'],
+                ['ar_form_script', './amd/min/newrecord.min.js'],
                 ['activityrecord_title', 'New Activity Record'],
                 ['coursep', $defaults[4][0]],
                 ['courseep', $defaults[4][1]],
@@ -70,11 +70,14 @@ if($error){
                             ['agreedact', $data[24]],
                             ['apprencom', $data[25]],
                             ['activityrecord_title', 'Edit Activity Record'],
-                            ['ar_form_script', './classes/js/editrecord.js'],
+                            ['ar_form_script', './amd/min/editrecord.min.js'],
                             ['ar_sign_div', 'flex'],
                             ['filesrc', "./classes/pdf/employercomment.php?cid=".$_SESSION['ar_records_cid']."&uid=".$_SESSION['ar_records_uid']."&id=$number&pdf=$data[26]"],
                             ['nextdate', $data[31]],
-                            ['remotef2f', $data[32]]
+                            ['remotef2f', $data[32]],
+                            ['hands', $data[33]],
+                            ['eandd', $data[34]],
+                            ['iaag', $data[35]]
                         ];
                         if($data[27] != '1970-01-01'){
                             array_push($array, ['coachsigndate', $data[27]]);

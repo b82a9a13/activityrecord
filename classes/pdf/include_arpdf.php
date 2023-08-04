@@ -56,12 +56,57 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>E & D, H & S, Safeguarding & Learner Welfare (LDC to check understanding & link to a vocational context. Any issues must be actioned accordingly)</b></th>
+                <th><b>Safeguarding</b></th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>'.$data[23].'</td>
+            </tr>
+        </tbody>
+    </table>
+';
+$pdf->writeHTML($html, true, false, false, false, '');
+$html = '
+    <table border="1" cellpadding="2">
+        <thead>
+            <tr>
+                <th><b>Health and Safety</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>'.$data[33].'</td>
+            </tr>
+        </tbody>
+    </table>
+';
+$pdf->writeHTML($html, true, false, false, false, '');
+$html = '
+    <table border="1" cellpadding="2">
+        <thead>
+            <tr>
+                <th><b>Equality and Diversity</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>'.$data[34].'</td>
+            </tr>
+        </tbody>
+    </table>
+';
+$pdf->writeHTML($html, true, false, false, false, '');
+$html = '
+    <table border="1" cellpadding="2">
+        <thead>
+            <tr>
+                <th><b>Information Advice and Guidance</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>'.$data[35].'</td>
             </tr>
         </tbody>
     </table>
@@ -116,33 +161,45 @@ $html = '
     </table>
 ';
 $pdf->writeHTML($html, true, false, false, false, '');
-$html = '
-    <table border="1" cellpadding="2">
-        <thead>
-            <tr>
-                <th colspan="3"><b>Functional Skills Progress</b></th>
-            </tr>
-            <tr>
-                <th></th>
-                <th><b>Learning today</b></th>
-                <th><b>Target for next visit</b></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th><b>Math</b></th>
-                <td>'.$data[17].'</td>
-                <td>'.$data[18].'</td>
-            </tr>
-            <tr>
-                <th><b>English</b></th>
-                <td>'.$data[19].'</td>
-                <td>'.$data[20].'</td>
-            </tr>
-        </tbody>
-    </table>
-';
-$pdf->writeHTML($html, true, false, false, false, '');
+if($data[17] != '' || $data[18] != '' || $data[19] != '' || $data[20] != ''){
+    $html = '
+        <table border="1" cellpadding="2">
+            <thead>
+                <tr>
+                    <th colspan="3"><b>Functional Skills Progress</b></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th><b>Learning today</b></th>
+                    <th><b>Target for next visit</b></th>
+                </tr>
+            </thead>
+            <tbody>
+    ';
+    if($data[17] != '' || $data[18] != ''){
+        $html .= '
+                <tr>
+                    <th><b>Math</b></th>
+                    <td>'.$data[17].'</td>
+                    <td>'.$data[18].'</td>
+                </tr>
+        ';
+    }
+    if($data[19] != '' || $data[20] != ''){
+        $html .= '
+                <tr>
+                    <th><b>English</b></th>
+                    <td>'.$data[19].'</td>
+                    <td>'.$data[20].'</td>
+                </tr>
+        ';
+    }
+    $html .= '
+            </tbody>
+        </table>
+    ';
+    $pdf->writeHTML($html, true, false, false, false, '');
+}
 $html = '
     <table border="1" cellpadding="2">
         <thead>

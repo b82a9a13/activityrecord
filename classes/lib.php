@@ -186,6 +186,9 @@ class lib{
         $record->apprenticecomment = $data[26];
         $record->nextdate = $data[27];
         $record->nexttype = $data[28];
+        $record->healthandsafety = $data[29];
+        $record->equalityad = $data[30];
+        $record->informationaag = $data[31];
         if($DB->insert_record('activityrecord_docs_info', $record, true)){
             return true;
         } else {
@@ -331,7 +334,10 @@ class lib{
                 str_replace(" ","+",$record->learnsign),
                 str_replace(" ","+",$record->ntasign),
                 date('Y-m-d H:m',$record->nextdate),
-                $record->nexttype
+                $record->nexttype,
+                $record->healthandsafety,
+                $record->equalityad,
+                $record->informationaag
             ];
             return $array;
         }
@@ -419,6 +425,9 @@ class lib{
         $record->ntasign = $DB->get_record_sql('SELECT coachsign FROM {trainingplan_setup} WHERE userid = ? AND teachid = ? AND courseid = ?',[$_SESSION['ar_records_uid'], $this->get_userid(), $_SESSION['ar_records_cid']])->coachsign;
         $record->nextdate = $data[28];
         $record->nexttype = $data[29];
+        $record->healthandsafety = $data[30];
+        $record->equalityad = $data[31];
+        $record->informationaag = $data[32];
         if($DB->update_record('activityrecord_docs_info', $record, true)){
             return true;
         } else {
@@ -495,7 +504,10 @@ class lib{
                 str_replace(" ","+",$record->learnsign),
                 str_replace(" ","+",$record->ntasign),
                 date('Y-m-d H:m',$record->nextdate),
-                $record->nexttype
+                $record->nexttype,
+                $record->healthandsafety,
+                $record->equalityad,
+                $record->informationaag
             ];
             return $array;
         }

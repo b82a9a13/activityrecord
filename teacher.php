@@ -58,7 +58,7 @@ if($errorText != ''){
             'enrolments' => array_values($enrolments)
         ];
         echo $OUTPUT->render_from_template('local_activityrecord/teacher_all_courses', $template);
-        echo("<script src='./classes/js/teacher_course.js' defer></script>");
+        echo("<script src='./amd/min/teacher_course.min.js' defer></script>");
        \local_activityrecord\event\viewed_menu::create(array('context' => \context_system::instance(), 'courseid' => $id))->trigger();
     } elseif($type == 'one'){
         $_SESSION['ar_menu_type'] = 'one';
@@ -66,7 +66,7 @@ if($errorText != ''){
             'coursename' => $lib->get_course_fullname($id)
         ];
         echo $OUTPUT->render_from_template('local_activityrecord/teacher_one_course',$template);
-        echo("<script src='./classes/js/teacher_course.js'></script>");
+        echo("<script src='./amd/min/teacher_course.min.js'></script>");
         echo("<script defer>course_clicked($id)</script>");
         \local_activityrecord\event\viewed_menu::create(array('context' => \context_course::instance($id), 'courseid' => $id))->trigger();
     }

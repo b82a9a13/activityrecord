@@ -67,12 +67,48 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>E & D, H & S, Safeguarding & Learner Welfare (LDC to check understanding & link to a vocational context. Any issues must be actioned accordingly)*</th>
+                    <th class='text-center'>Safeguarding*</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><textarea class='w-100' id="safeguard" disabled></textarea></td>
+                    <td id="td_safeguard"><textarea class='w-100' id="safeguard" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>Health and Safety*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="td_hands"><textarea class='w-100' id="hands" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>Equality and Diversity*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="td_eandd"><textarea class='w-100' id="eandd" disabled></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class='table table-bordered table-striped table-hover'>
+            <thead>
+                <tr>
+                    <th class='text-center'>Information Advice and Guidance*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="td_iaag"><textarea class='w-100' id='iaag' disabled></textarea></td>
                 </tr>
             </tbody>
         </table>
@@ -116,27 +152,27 @@
                 </tr>
             </tbody>
         </table>
-        <table class='table table-bordered table-striped table-hover'>
+        <table class='table table-bordered table-striped table-hover' id="func_div" style='display: none;'>
             <thead>
                 <tr>
                     <th colspan='3' class='text-center'>Functional Skills Progress</th>
                 </tr>
                 <tr>
                     <th></th>
-                    <th class='text-center'>Learning today*</th>
-                    <th class='text-center'>Target for next visit*</th>
+                    <th class='text-center' id="func_title0" style='display:none;'>Learning today*</th>
+                    <th class='text-center' id="func_title1" style='display:none;'>Target for next visit*</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th class='text-center'>Math*</th>
-                    <td><textarea class='w-100' id="mathtoday" disabled></textarea></td>
-                    <td><textarea class='w-100' id="mathnext" disabled></textarea></td>
+                    <th class='text-center d-flex' id="math_title"></th>
+                    <td id="td_mathtoday"><textarea class='w-100' id="mathtoday" style='display:none;' disabled></textarea></td>
+                    <td id="td_mathnext"><textarea class='w-100' id="mathnext" style='display:none;' disabled></textarea></td>
                 </tr>
                 <tr>
-                    <th class='text-center'>English*</th>
-                    <td><textarea class='w-100' id="engtoday" disabled></textarea></td>
-                    <td><textarea class='w-100' id="engnext" disabled></textarea></td>
+                    <th class='text-center d-flex' id="eng_title"></th>
+                    <td id="td_engtoday"><textarea class='w-100' id="engtoday" style='display:none;' disabled></textarea></td>
+                    <td id="td_engnext"><textarea class='w-100' id="engnext" style='display:none;' disabled></textarea></td>
                 </tr>
             </tbody>
         </table>
@@ -232,7 +268,7 @@
         <h2 style="display:none;" class="text-error" id="ar_error"></h2>
         <button class='w-100 btn btn-primary' type="submit">Submit</button>
     </form>
-    <script src='./classes/js/learn_editrecord.js' defer></script>
-    <script src='./classes/js/learnsign.js' defer></script>
+    <script src='./amd/min/learn_editrecord.min.js' defer></script>
+    <script src='./amd/min/learnsign.min.js' defer></script>
 </div>
-<script src='./classes/js/learn_getrecord.js' defer></script>
+<script src='./amd/min/learn_getrecord.min.js' defer></script>

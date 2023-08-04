@@ -91,19 +91,19 @@ if(!preg_match($textarea, $impact) || empty($impact)){
     array_push($errorarray, ['impact', 'What impact:'.preg_replace($textareaReplace,'', $impact)]);
 }
 $mathtoday = $_POST['mathtoday'];
-if(!preg_match($textarea, $mathtoday) || empty($mathtoday)){
+if(!preg_match($textarea, $mathtoday)){
     array_push($errorarray, ['mathtoday', 'Math, Learning today:'.preg_replace($textareaReplace,'', $mathtoday)]);
 }
 $mathnext = $_POST['mathnext'];
-if(!preg_match($textarea, $mathnext) || empty($mathnext)){
+if(!preg_match($textarea, $mathnext)){
     array_push($errorarray, ['mathnext', 'Math, Target:'.preg_replace($textareaReplace,'', $mathnext)]);
 }
 $engtoday = $_POST['engtoday'];
-if(!preg_match($textarea, $engtoday) || empty($engtoday)){
+if(!preg_match($textarea, $engtoday)){
     array_push($errorarray, ['engtoday', 'English, Learning today:'.preg_replace($textareaReplace,'', $engtoday)]);
 }
 $engnext = $_POST['engnext'];
-if(!preg_match($textarea, $engnext) || empty($engnext)){
+if(!preg_match($textarea, $engnext)){
     array_push($errorarray, ['engnext', 'English, Target:'.preg_replace($textareaReplace,'', $engnext)]);
 }
 $aln = $_POST['aln'];
@@ -166,6 +166,18 @@ $remotef2f = $_POST['remotef2f'];
 if($remotef2f != 'remote' && $remotef2f != 'f2f'){
     array_push($errorarray, ['remotef2f', 'Remote / Face to Face']);
 }
+$hands = $_POST['hands'];
+if(!preg_match($textarea, $hands) || empty($hands)){
+    array_push($errorarray, ['hands', 'Health and Safety:'.preg_replace($textareaReplace, '', $hands)]);
+}
+$eandd = $_POST['eandd'];
+if(!preg_match($textarea, $eandd) || empty($eandd)){
+    array_push($errorarray, ['eandd', 'Equality and Diversity:'.preg_replace($textareaReplace, '', $eandd)]);
+}
+$iaag = $_POST['iaag'];
+if(!preg_match($textarea, $iaag) || empty($iaag)){
+    array_push($errorarray, ['iaag', 'Information Advice and Guidance:'.preg_replace($textareaReplace, '', $iaag)]);
+}
 
 if($errorarray != []){
     $returnText->error = $errorarray;
@@ -199,7 +211,10 @@ if($errorarray != []){
         $file,
         $apprencom,
         $nextdate,
-        $remotef2f
+        $remotef2f,
+        $hands,
+        $eandd,
+        $iaag
     ]);
     if($result){
         if($fileArr != []){

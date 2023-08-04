@@ -49,7 +49,10 @@
                 <FIELD NAME="coachfeedback" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="agreedaction" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="employercomment" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
-                <FIELD NAME="safeguarding" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="safeguarding" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="healthandsafety" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="equalityad" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="informationaag" TYPE="text" NOTNULL="true"/>
                 <FIELD NAME="apprenticecomment" TYPE="text" NOTNULL="false"/>
                 <FIELD NAME="ntasigndate" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
                 <FIELD NAME="employsigndate" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>

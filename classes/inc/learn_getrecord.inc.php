@@ -46,7 +46,10 @@ if($error){
             ['apprencom', $data[25]],
             ['filesrc', "./classes/pdf/learn_employercomment.php?cid=".$_SESSION['ar_lrecord_cid']."&id=$number&pdf=$data[26]"],
             ['nextdate', $data[31]],
-            ['remotef2f', $data[32]]
+            ['remotef2f', $data[32]],
+            ['hands', $data[33]],
+            ['eandd', $data[34]],
+            ['iaag', $data[35]]
         ];
         if($data[27] != '1970-01-01'){
             array_push($array, ['coachsigndate', $data[27]]);

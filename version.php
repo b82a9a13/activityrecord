@@ -8,7 +8,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_activityrecord';
-$plugin->version = 12;
+$plugin->version = 13;
 $plugin->requires = 2016052314;
 $plugin->dependencies = [
     'local_trainingplan' => 12,
