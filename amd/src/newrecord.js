@@ -97,7 +97,10 @@ $(document).ready(function(){
     const funcArr = ['mathtoday', 'mathnext', 'engtoday', 'engnext'];
     funcArr.forEach(function(arr){
         $(`#${arr}`).prop('disabled', true);
+        $(`#${arr}`)[0].style.display = 'none';
     });
+    $(`#func_title0`)[0].style.display = 'none';
+    $(`#func_title1`)[0].style.display = 'none';
 })
 function checkbox(type){
     $(`#${type}check`)[0].checked = ($(`#${type}check`)[0].checked) ? false : true;
