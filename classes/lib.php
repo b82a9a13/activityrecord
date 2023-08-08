@@ -138,7 +138,7 @@ class lib{
     //Get docs id from a specific userid and courseid
     public function get_docsid($uid, $cid){
         global $DB;
-        return $DB->get_record_sql('SELECT id FROM {activityrecord_docs} WHERE userid = ? and courseid = ?',[$uid, $cid])->id;
+        return ($DB->record_exists('activityrecord_docs', [$DB->sql_compare_text('userid') => $uid, $DB->sql_compare_text('courseid') => $cid])) ? $DB->get_record_sql('SELECT id FROM {activityrecord_docs} WHERE userid = ? and courseid = ?',[$uid, $cid])->id : null;
     }
 
     //Create a activity record
@@ -230,7 +230,7 @@ class lib{
     //Get OTJH progress to date for a specific userid and courseid
     public function get_otjh_progress($uid, $cid, $startdate, $otjhours, $totalmonths){
         global $DB;
-        $records = $DB->get_records_sql('SELECT {hourslog_hours_info}.duration as duration FROM {hourslog_hours} 
+        $records = $DB->get_records_sql('SELECT {hourslog_hours_info}.id, {hourslog_hours_info}.duration as duration FROM {hourslog_hours} 
             INNER JOIN {hourslog_hours_info} ON {hourslog_hours_info}.hoursid = {hourslog_hours}.id
             WHERE {hourslog_hours}.userid = ? AND {hourslog_hours}.courseid = ?',
         [$uid, $cid]);
@@ -256,10 +256,14 @@ class lib{
     public function check_prev_actions($uid, $cid){
         global $DB;
         $docsid = $this->get_docsid($uid, $cid);
-        $record = $DB->get_record_sql('SELECT MAX(reviewdate), impact FROM {activityrecord_docs_info} WHERE docsid = ?',[$docsid]);
-        if(count($record) > 0){
-            if($record->impact != null){
-                return true;
+        if($DB->record_exists('activityrecord_docs_info', [$DB->sql_compare_text('docsid') => $docsid])){
+            $record = $DB->get_record_sql('SELECT MAX(reviewdate), impact FROM {activityrecord_docs_info} WHERE docsid = ?',[$docsid]);
+            if($record != null){
+                if($record->impact != null){
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }

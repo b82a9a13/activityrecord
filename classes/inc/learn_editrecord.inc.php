@@ -4,19 +4,20 @@ use local_activityrecord\lib;
 require_login();
 $lib = new lib;
 $returnText = new stdClass();
+$p = 'local_activityrecord';
 
 $errorarray = [];
 $date = $_POST['date'];
 if($date != null && !empty($date)){
     if(!preg_match("/^[0-9\-]*$/", $date)){
-        array_push($errorarray, ['learnsigndate', 'Learner Signature Date']);
+        array_push($errorarray, ['learnsigndate', get_string('learner_sd', $p)]);
     } else {
         $date = (new DateTime($date))->format('U');
     }
 }
 $com = $_POST['com'];
 if(!preg_match("/^[a-zA-Z0-9 ,.!'();:\s\-#\/]*$/", $com) || empty($com)){
-    array_push($errorarray, ['apprencom', 'Apprentice Comment:'.preg_replace("/[a-zA-Z0-9 ,.!'():;\s\-#\/]/",'', $com)]);
+    array_push($errorarray, ['apprencom', get_string('apprentice_com', $p).':'.preg_replace("/[a-zA-Z0-9 ,.!'():;\s\-#\/]/",'', $com)]);
 }
 
 if($errorarray != []){

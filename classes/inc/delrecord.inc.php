@@ -8,7 +8,7 @@ $returnText = new stdClass();
 $error = '';
 $id = $_POST['id'];
 if(!preg_match("/^[0-9]*$/", $id) || empty($id)){
-    $error = 'Invalid id';
+    $error = get_string('invalid_i', 'local_activityrecord');
 }
 
 if($error != ''){

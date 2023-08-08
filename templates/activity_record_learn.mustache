@@ -1,31 +1,31 @@
-<button onclick="window.location.href='../../my/index.php'" class="btn btn-primary" id="activityrecord_btm">Back to menu</button>
-<h2 class='text-center'><b>{{fullname}}'s Activity Records</b></h2>
+<button onclick="window.location.href='../../my/index.php'" class="btn btn-primary" id="activityrecord_btm">{{btm}}</button>
+<h2 class='text-center'><b>{{fullname}} {{title}}</b></h2>
 <h2 class='text-center'><b>{{coursename}}</b></h2>
 <div>
-    <h3>Records</h3>
+    <h3>{{records_txt}}</h3>
     <ol>
         {{#records}}
             <li class='d-flex mb-2'>
                 <h4 class='mr-1'>{{0}}</h4>
-                <button class='btn btn-primary mr-1 mb-1' onclick="getrecord({{1}})">Edit</button>
-                <button class='btn btn-primary mr-1 mb-1' onclick="window.open('./classes/pdf/learn_arpdf.php?id={{1}}', '_blank');window.open('./classes/pdf/learn_employercomment_pdf.php?id={{1}}', '_blank');">PDF</button>
+                <button class='btn btn-primary mr-1 mb-1' onclick="getrecord({{1}})">{{edit}}</button>
+                <button class='btn btn-primary mr-1 mb-1' onclick="window.open('./classes/pdf/learn_arpdf.php?id={{1}}', '_blank');window.open('./classes/pdf/learn_employercomment_pdf.php?id={{1}}', '_blank');">{{pdf}}</button>
             </li>
         {{/records}}
     </ol>
     <h2 style="display:none;" class="text-error" id="edit_error"></h2>
 <div>
 <div id="activityrecord_content_div" style="display: none;">
-    <h2 class='text-center' id="activityrecord_title">Edit Activity Record</h2>
+    <h2 class='text-center' id="activityrecord_title">{{edit_ar}}</h2>
     <form action="" id="activityrecord_form">
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>Apprentice*</th>
-                    <th class='text-center'>Review Date*</th>
-                    <th class='text-center'>Standard*</th>
-                    <th class='text-center'>Employer or Store*</th>
-                    <th class='text-center'>Coach*</th>
-                    <th class='text-center'>Manager/Mentor*</th>
+                    <th class='text-center'>{{apprentice}}*</th>
+                    <th class='text-center'>{{review_date}}*</th>
+                    <th class='text-center'>{{standard}}*</th>
+                    <th class='text-center'>{{employer_os}}*</th>
+                    <th class='text-center'>{{coach}}*</th>
+                    <th class='text-center'>{{manager_om}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,24 +42,24 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th colspan='6' class='text-center'>Summary of progress</th>
+                    <th colspan='6' class='text-center'>{{summary_op}}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th>Course % Progress to date*</th>
+                    <th>{{course_ptd}}*</th>
                     <td><input class='w-100' type='number' id="coursep" step='1' disabled></td>
-                    <th>Course % Expected Progress according to Training Plan*</th>
+                    <th>{{course_eptd}}*</th>
                     <td><input class='w-100' type='number' id="courseep" step='1' disabled></td>
-                    <th>Comments*</th>
+                    <th>{{comments}}*</th>
                     <td class='w-50'><textarea class='w-100' id="coursecomment" disabled></textarea></td>
                 </tr>
                 <tr>
-                    <th>OTJH Completed*</th>
+                    <th>{{otjh_c}}*</th>
                     <td><input class='w-100' type='number' id="otjhc" step='1' disabled></td>
-                    <th>Expected OTJH as per Training Plan*</th>
+                    <th>{{expected_otjh_aptp}}*</th>
                     <td><input class='w-100' type='number' id="otjhe" step='1' disabled></td>
-                    <th>Comments*</th>
+                    <th>{{comments}}*</th>
                     <td class='w-50'><textarea class='w-100' id="otjhcomment" disabled></textarea></td>
                 </tr>
             </tbody>
@@ -67,7 +67,7 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>Safeguarding*</th>
+                    <th class='text-center'>{{safeguarding}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -79,7 +79,7 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>Health and Safety*</th>
+                    <th class='text-center'>{{health_as}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -91,7 +91,7 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>Equality and Diversity*</th>
+                    <th class='text-center'>{{equality_ad}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,7 +103,7 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>Information Advice and Guidance*</th>
+                    <th class='text-center'>{{information_aag}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -115,8 +115,8 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>Recap on actions from last month</th>
-                    <th class='text-center'>What impact has this had in your current job role/situation</th>
+                    <th class='text-center'>{{recap_act_title}}</th>
+                    <th class='text-center'>{{what_impact_title}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -129,8 +129,8 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>Details of Teaching & Learning activity undertaken today (include reference to modules and knowledge, skills & behaviours)*</th>
-                    <th class='text-center'>Modules and K,S,B*</th>
+                    <th class='text-center'>{{details_ot_title}}*</th>
+                    <th class='text-center'>{{modules_aksb}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -143,7 +143,7 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>What impact will this have in your job role/situation*</th>
+                    <th class='text-center'>{{what_impactw_title}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -155,12 +155,12 @@
         <table class='table table-bordered table-striped table-hover' id="func_div" style='display: none;'>
             <thead>
                 <tr>
-                    <th colspan='3' class='text-center'>Functional Skills Progress</th>
+                    <th colspan='3' class='text-center'>{{functional_sp}}</th>
                 </tr>
                 <tr>
                     <th></th>
-                    <th class='text-center' id="func_title0" style='display:none;'>Learning today*</th>
-                    <th class='text-center' id="func_title1" style='display:none;'>Target for next visit*</th>
+                    <th class='text-center' id="func_title0" style='display:none;'>{{learning_t}}*</th>
+                    <th class='text-center' id="func_title1" style='display:none;'>{{target_fnv}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -179,7 +179,7 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>ALN (Additional Learner Needs) Suppot delivered today*</th>
+                    <th class='text-center'>{{aln_title}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -191,7 +191,7 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>Agreed actions & future skills development activity*</th>
+                    <th class='text-center'>{{agreed_act_title}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -203,7 +203,7 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>Coach/Tutor Feedback*</th>
+                    <th class='text-center'>{{coach_otf}}*</th>
                 </tr>
             </thead>
             <tbody>
@@ -215,7 +215,7 @@
         <table class='table table-bordered table-striped table-hover'>
             <thead>
                 <tr>
-                    <th class='text-center'>Apprentice Comments regarding their learning journey</th>
+                    <th class='text-center'>{{apprentice_com_title}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -226,9 +226,9 @@
         </table>
         <table class='table table-bordered table-striped table-hover'>
             <tr>
-                <th class='w-25'>Employer comment on progress*</th>
+                <th class='w-25'>{{employer_cop}}*</th>
                 <td class='w-75'>
-                    <h4>Choose a PDF</h4>
+                    <h4>{{choose_apdf}}</h4>
                     <input type='file' name='file' class='w-100' id="file" disabled>
                     <iframe id="filesrc" src="" style="height:450px;" class='w-100' style="display:none;"></iframe>
                 </td>
@@ -236,37 +236,37 @@
         </table>
         <table class='table table-bordered table-striped table-hover'>
             <tr>
-                <th class='w-25'>Date & time of next planned review</th>
+                <th class='w-25'>{{date_at_title}}</th>
                 <td id="td_nextdate">
                     <input type="datetime-local" id="nextdate" disabled>
                 </td>
             </tr>
             <tr>
-                <th class='w-25'>Remote / Face to Face</th>
+                <th class='w-25'>{{remote_ftf}}</th>
                 <td id="td_remotef2f">
                     <select id="remotef2f" disabled>
-                        <option id="remotef2f_default" value="" selected disabled>Remote/Face to Face</option>
-                        <option id="remotef2f_f2f" value="f2f">Face to Face</option>
-                        <option id="remotef2f_remote" value="remote">Remote</option>
+                        <option id="remotef2f_default" value="" selected disabled>{{remote_ftf}}</option>
+                        <option id="remotef2f_f2f" value="f2f">{{face_tf}}</option>
+                        <option id="remotef2f_remote" value="remote">{{remote}}</option>
                     </select>
                 </td>
             </tr>
         </table>
         <div class='d-flex' id="ar_sign_div">
             <div class="mr-1">
-                <p>Learner Signature</p>
-                <button class='btn btn-primary mb-2' type='button' id="learn_signed_btn">Add Signature</button>
+                <p>{{learner_s}}</p>
+                <button class='btn btn-primary mb-2' type='button' id="learn_signed_btn">{{add_s}}</button>
                 <img width="250px" height="100px" id="learnsignimg" style="display:none;">
                 <p id="td_learnsigndate"><input type='date' name='learnsigndate' id="learnsigndate" style="display:none;"></p>
             </div>
             <div>
-                <p>Coach Signature</p>
+                <p>{{coach_s}}</p>
                 <img width="250px" height="100px" id="coachsignimg" style="display:none;">
                 <p><input type='date' name='coachsigndate' id="coachsigndate" style="display:none;" disabled></p>
             </div>
         </div>
         <h2 style="display:none;" class="text-error" id="ar_error"></h2>
-        <button class='w-100 btn btn-primary' type="submit">Submit</button>
+        <button class='w-100 btn btn-primary' type="submit">{{submit}}</button>
     </form>
     <script src='./amd/min/learn_editrecord.min.js' defer></script>
     <script src='./amd/min/learnsign.min.js' defer></script>

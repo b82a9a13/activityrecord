@@ -9,13 +9,14 @@ require_once(__DIR__.'/../../config.php');
 use local_activityrecord\lib;
 require_login();
 $lib = new lib;
+$p = 'local_activityrecord';
 
 $title = 'Activity Record';
 $type = '';
 $enrolments = [];
 $id = null;
 $errorText = '';
-if($_GET['id']){
+if(isset($_GET['id'])){
     $id = $_GET['id'];
     if(!preg_match("/^[0-9]*$/", $id) || empty($id)){
         $errorText = 'Invalid Course id.';
@@ -55,6 +56,7 @@ if($errorText != ''){
     if($type == 'all'){
         $_SESSION['ar_menu_type'] = 'all';
         $template = (Object)[
+            'title' => get_string('activity_r', $p),
             'enrolments' => array_values($enrolments)
         ];
         echo $OUTPUT->render_from_template('local_activityrecord/teacher_all_courses', $template);
@@ -63,6 +65,7 @@ if($errorText != ''){
     } elseif($type == 'one'){
         $_SESSION['ar_menu_type'] = 'one';
         $template = (Object)[
+            'title' => get_string('activity_r', $p),
             'coursename' => $lib->get_course_fullname($id)
         ];
         echo $OUTPUT->render_from_template('local_activityrecord/teacher_one_course',$template);

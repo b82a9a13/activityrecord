@@ -4,6 +4,7 @@ use local_activityrecord\lib;
 require_login();
 $lib = new lib;
 $returnText = new stdClass();
+$p = 'local_activityrecord';
 
 $error = false;
 $number = $_POST['num'];
@@ -12,7 +13,7 @@ if(!preg_match("/^[0-9]*$/", $number) || empty($number)){
 }
 
 if($error){
-    $returnText->error = 'Invalid id.';
+    $returnText->error = get_string('invalid_i', $p);
 } else {
     $data = $lib->get_record_data_learn($number);
     $_SESSION['ar_lrecords_rid'] = $number;
@@ -62,7 +63,7 @@ if($error){
         $returnText->return = $array;
         \local_activityrecord\event\viewed_activity_record_learn::create(array('context' => \context_course::instance($_SESSION['ar_lrecord_cid']), 'courseid' => $_SESSION['ar_lrecord_cid']))->trigger();
     } else {
-        $returnText->error = 'No data available.';
+        $returnText->error = get_string('no_da', $p);
     }
 }
 echo(json_encode($returnText));

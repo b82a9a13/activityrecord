@@ -4,6 +4,7 @@ use local_activityrecord\lib;
 require_login();
 $lib = new lib;
 $returnText = new stdClass();
+$p = 'local_activityrecord';
 
 $error = false;
 $type = $_POST['type'];
@@ -12,7 +13,7 @@ if(!empty($_POST['type']) && $type != 'new' && $type != 'edit'){
 }
 
 if($error){
-    $returnText->error = 'Invalid type.';
+    $returnText->error = get_string('invalid_t', $p);
 } else {
     if(isset($_SESSION['ar_records_uid']) && isset($_SESSION['ar_records_cid'])){
         if($type == 'new'){
@@ -90,13 +91,13 @@ if($error){
                         $returnText->return = $array;
                         \local_activityrecord\event\viewed_activity_record::create(array('context' => \context_course::instance($_SESSION['ar_records_cid']), 'courseid' => $_SESSION['ar_records_cid'], 'relateduserid' => $_SESSION['ar_records_uid']))->trigger();
                     } else {
-                        $returnText->error = 'No data available.';
+                        $returnText->error = get_string('no_da', $p);
                     }
                 }
             }
         }
     } else {
-        $returnText->error = 'Required variables are not set.';
+        $returnText->error = get_string('required_vns', $p);
     }
 }
 echo(json_encode($returnText));

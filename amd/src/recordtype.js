@@ -2,6 +2,7 @@ function recordtype(type, number){
     if(type != 'new' && type != 'edit'){
         return;
     } else {
+        $(`#ar_error`)[0].style.display = 'none';
         if(type === 'edit'){
             $(`#func_div`)[0].style.display = 'none';
         }
@@ -58,9 +59,13 @@ function recordtype(type, number){
         ];
         inputArray.forEach(function(item){
             $(`#${item}`)[0].value = '';
+            $(`#td_${item}`)[0].style.background = '';
         });
         innerArray.forEach(function(item){
-            $(`#${item}`)[0].innerText = '';
+            $(`#${item}`)[0].value = '';
+            if(item != 'activityrecord_title'){
+                $(`#td_${item}`)[0].style.background = '';
+            }
         });
         srcArray.forEach(function(item){
             $(`#${item}`)[0].src = '';
@@ -98,7 +103,7 @@ function recordtype(type, number){
                             if(inputArray.includes(item[0])){
                                 $(`#${item[0]}`)[0].value = item[1];
                             } else if(innerArray.includes(item[0])){
-                                $(`#${item[0]}`)[0].innerHTML = item[1];
+                                $(`#${item[0]}`)[0].value = item[1];
                             } else if(srcArray.includes(item[0])){
                                 if(item[0] == 'ar_form_script'){
                                     let oldScript = $(`#${item[0]}`)[0];
