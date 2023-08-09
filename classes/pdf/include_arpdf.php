@@ -1,14 +1,15 @@
 <?php
+$headStyle = ' bgcolor="#95287A" style="color: #fafafa;"';
 $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('apprentice', $p).'</b></th>
-                <th><b>'.get_string('review_date', $p).'</b></th>
-                <th><b>'.get_string('standard', $p).'</b></th>
-                <th><b>'.get_string('employer_os', $p).'</b></th>
-                <th><b>'.get_string('coach', $p).'</b></th>
-                <th><b>'.get_string('manager_om', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('apprentice', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('review_date', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('standard', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('employer_os', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('coach', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('manager_om', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -29,24 +30,24 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th colspan="24"><b>'.get_string('summary_op', $p).'</b></th>
+                <th'.$headStyle.' colspan="24"><b>'.get_string('summary_op', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <th colspan="3"><b>'.get_string('course_ptd', $p).'</b></th>
+                <th'.$headStyle.' colspan="3"><b>'.get_string('course_ptd', $p).'</b></th>
                 <td colspan="3">'.$data[6].'</td>
-                <th colspan="3"><b>'.get_string('course_eptd', $p).'</b></th>
+                <th'.$headStyle.' colspan="3"><b>'.get_string('course_eptd', $p).'</b></th>
                 <td colspan="3">'.$data[7].'</td>
-                <th colspan="3"><b>'.$comments.'</b></th>
+                <th'.$headStyle.' colspan="3"><b>'.$comments.'</b></th>
                 <td colspan="9">'.$data[8].'</td>
             </tr>
             <tr>
-                <th colspan="3"><b>'.get_string('otjh_c', $p).'</b></th>
+                <th'.$headStyle.' colspan="3"><b>'.get_string('otjh_c', $p).'</b></th>
                 <td colspan="3">'.$data[9].'</td>
-                <th colspan="3"><b>'.get_string('expected_otjh_aptp', $p).'</b></th>
+                <th'.$headStyle.' colspan="3"><b>'.get_string('expected_otjh_aptp', $p).'</b></th>
                 <td colspan="3">'.$data[10].'</td>
-                <th colspan="3"><b>'.$comments.'</b></th>
+                <th'.$headStyle.' colspan="3"><b>'.$comments.'</b></th>
                 <td colspan="9">'.$data[11].'</td>
             </tr>
         </tbody>
@@ -57,7 +58,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('safeguarding', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('safeguarding', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -72,7 +73,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('health_as', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('health_as', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -87,7 +88,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('equality_ad', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('equality_ad', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -102,7 +103,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('information_aag', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('information_aag', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -117,8 +118,8 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('recap_act_title', $p).'</b></th>
-                <th><b>'.get_string('what_impact_title', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('recap_act_title', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('what_impact_title', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -134,8 +135,8 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('details_ot_title', $p).'</b></th>
-                <th><b>'.get_string('modules_aksb', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('details_ot_title', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('modules_aksb', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -151,7 +152,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('what_impactw_title', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('what_impactw_title', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -167,7 +168,7 @@ if($data[17] != '' || $data[18] != '' || $data[19] != '' || $data[20] != ''){
         <table border="1" cellpadding="2">
             <thead>
                 <tr>
-                    <th colspan="3"><b>'.get_string('functional_sp', $p).'</b></th>
+                    <th'.$headStyle.' colspan="3"><b>'.get_string('functional_sp', $p).'</b></th>
                 </tr>
                 <tr>
                     <th></th>
@@ -180,7 +181,7 @@ if($data[17] != '' || $data[18] != '' || $data[19] != '' || $data[20] != ''){
     if($data[17] != '' || $data[18] != ''){
         $html .= '
                 <tr>
-                    <th><b>'.get_string('math', $p).'</b></th>
+                    <th'.$headStyle.'><b>'.get_string('math', $p).'</b></th>
                     <td>'.$data[17].'</td>
                     <td>'.$data[18].'</td>
                 </tr>
@@ -189,7 +190,7 @@ if($data[17] != '' || $data[18] != '' || $data[19] != '' || $data[20] != ''){
     if($data[19] != '' || $data[20] != ''){
         $html .= '
                 <tr>
-                    <th><b>'.get_string('english', $p).'</b></th>
+                    <th'.$headStyle.'><b>'.get_string('english', $p).'</b></th>
                     <td>'.$data[19].'</td>
                     <td>'.$data[20].'</td>
                 </tr>
@@ -205,7 +206,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('aln_title', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('aln_title', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -220,7 +221,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('agreed_act_title', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('agreed_act_title', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -235,7 +236,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('coach_otf', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('coach_otf', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -250,7 +251,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('apprentice_com_title', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('apprentice_com_title', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -264,7 +265,7 @@ $pdf->writeHTML($html, true, false, false, false, '');
 $html = '
     <table border="1" cellpadding="2">
         <tr>
-            <th><b>'.get_string('employer_cop', $p).'</b></th>
+            <th'.$headStyle.'><b>'.get_string('employer_cop', $p).'</b></th>
             <td>MonthlyActivityRecord-'.str_replace(' ','_',$fullname).'-'.str_replace(' ','_',$coursename).'-'.$data[1].'-EmployerComment.pdf</td>
         </tr>
     </table>
@@ -273,7 +274,7 @@ $pdf->writeHTML($html, true, false, false, false, '');
 $html = '
     <table border="1" cellpadding="2">
         <tr>
-            <th><b>'.get_string('date_at_title', $p).'</b></th>
+            <th'.$headStyle.'><b>'.get_string('date_at_title', $p).'</b></th>
             <td>'.date('H:m d-m-Y',(new DateTime($data[31]))->format('U')).'</td>
         </tr>
         <tr>
@@ -287,8 +288,8 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>'.get_string('learner_s', $p).'</b></th>
-                <th><b>'.get_string('coach_s', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('learner_s', $p).'</b></th>
+                <th'.$headStyle.'><b>'.get_string('coach_s', $p).'</b></th>
             </tr>
         </thead>
         <tbody>';

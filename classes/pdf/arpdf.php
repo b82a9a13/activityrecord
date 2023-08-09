@@ -50,8 +50,10 @@ if($error != ''){
     $pdf = new MYPDF('P', 'mm', 'A4', true, 'UTF-8', false);
     $coursename = $lib->get_course_fullname($cid);
     $pdf->addPage('P', 'A4');
-    $pdf->Cell(0, 0, get_string('activity_rec', $p)." - $fullname - $coursename", 0, 0, 'C', 0, '', 0);
+    $pdf->setFont('TImes', 'B', 26);
+    $pdf->Cell(0, 0, get_string('activity_rec', $p)." - $fullname", 0, 0, 'C', 0, '', 0);
     $pdf->Ln();
+    $pdf->setFont('Times', 'B', 11);
     $data = $lib->get_record_data($id);
     include('./include_arpdf.php');
     \local_activityrecord\event\viewed_activity_record_pdf::create(array('context' => \context_course::instance($cid), 'courseid' => $cid, 'relateduserid' => $uid, 'other' => $id))->trigger();
