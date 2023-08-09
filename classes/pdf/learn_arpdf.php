@@ -52,7 +52,7 @@ if($error != ''){
     $pdf = new MYPDF('P', 'mm', 'A4', true, 'UTF-8', false);
     $coursename = $lib->get_course_fullname($cid);
     $pdf->addPage('P', 'A4');
-    $pdf->setFont('TImes', 'B', 26);
+    $pdf->setFont('Times', 'B', 26);
     $pdf->Cell(0, 0, get_string('activity_rec', $p)." - $fullname", 0, 0, 'C', 0, '', 0);
     $pdf->Ln();
     $pdf->setFont('Times', '', 11);
