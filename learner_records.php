@@ -12,33 +12,35 @@ $lib = new lib;
 $p = 'local_activityrecord';
 
 $errorText = '';
-$cid = $_GET['cid'];
+$cid = null;
 $fullname = '';
 if(isset($_GET['cid'])){
+    $cid = $_GET['cid'];
     if(!preg_match("/^[0-9]*$/", $cid) || empty($cid)){
-        $errorText = 'Invalid course id provided.';
+        $errorText = get_string('invalid_cip', $p);
     } else {
+        $title = get_string('activity_r', $p);
         $context = context_course::instance($cid);
         require_capability('local/activityrecord:student', $context);
         $PAGE->set_context($context);
         $PAGE->set_course($lib->get_course_record($cid));
         $PAGE->set_url(new moodle_url("/local/activityrecord/learner_records.php?cid=$cid"));
-        $PAGE->set_title('Activity Records');
-        $PAGE->set_heading('Activity Records');
+        $PAGE->set_title($title);
+        $PAGE->set_heading($title);
         $PAGE->set_pagelayout('incourse');
         $fullname = $lib->get_current_user_fullname();
         if(!$lib->check_setup_exists_learner($cid)){
-            $errorText = 'Your coach needs to create a setup for you.';
+            $errorText = get_string('coach_ntcs', $p);
         } else {
             if(!$lib->check_learn_sign_exists($cid)){
-                $errorText = "You need to create your signature.";
+                $errorText = get_string('signature_c', $p);
             } else {
                 $_SESSION['ar_lrecord_cid'] = $cid;
             }
         }
     }
 } else {
-    $errorText = 'No course id provided.';
+    $errorText = get_string('no_cip', $p);
 }
 
 echo $OUTPUT->header();

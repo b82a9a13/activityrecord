@@ -3,28 +3,30 @@ require_once(__DIR__.'/../../../../config.php');
 use local_activityrecord\lib;
 require_login();
 $lib = new lib();
+$p = 'local_activityrecord';
 
-$id = $_GET['id'];
+$id = null;
 $cid = '';
 if(isset($_GET['id'])){
+    $id = $_GET['id'];
     if(!preg_match("/^[0-9]*$/",$id) || empty($id) || !isset($_SESSION['ar_lrecord_cid'])){
-        echo("<h1 class='text-error'>Invalid id provided.</h1>");
+        echo("<h1 class='text-error'>".get_string('invalid_ip', $p)."</h1>");
         exit();
     } else {
         $cid = $_SESSION['ar_lrecord_cid'];
         $context = context_course::instance($cid);
         require_capability('local/activityrecord:student', $context);
         if(!$lib->check_setup_exists_learner($cid)){
-            echo("<h1 class='text-error'>Your coach needs to create a setup for you.</h1>");
+            echo("<h1 class='text-error'>".get_string('coach_ntcs', $p)."</h1>");
             exit();
         } else {
             if(!$lib->check_learn_sign_exists($cid)){
-                echo("<h1 class='text-error'>You need to create your signature.</h1>");
+                echo("<h1 class='text-error'>".get_string('need_tcs', $p)."</h1>");
                 exit();
             } else {
                 $filename = $lib->get_filename_learn($id, $cid);
                 if($filename == false){
-                    echo("<h1 class='text-error'>Employer comment doesn't exist.</h1>");
+                    echo("<h1 class='text-error'>".get_string('employer_cde', $p)."</h1>");
                     exit();
                 } else {
                     header('Content-Type: application/pdf');
@@ -38,4 +40,7 @@ if(isset($_GET['id'])){
             }
         }
     }
+} else {
+    echo("<h1 class='text-error'>".get_string('no_ip', $p)."</h1>");
+    exit();
 }

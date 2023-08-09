@@ -133,7 +133,7 @@ if(isset($_FILES['file'])){
         $filesize = $file['size'];
         $fileerror = $file['error'];
         $filetype = $file['type'];
-        $fileext = strtolower(end(explode('.',$filename)));
+        $fileext = strtolower((pathinfo($filename))['extension']);
         if(in_array($fileext, ['pdf'])){
             if($fileerror === 0){
                 if($filesize < 2500000){

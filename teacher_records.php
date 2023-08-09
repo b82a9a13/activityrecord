@@ -12,50 +12,56 @@ $lib = new lib;
 $p = 'local_activityrecord';
 
 $errorText = '';
-$e = $_GET['e'];
-$uid = $_GET['uid'];
-$cid = $_GET['cid'];
+$e = null;
+$uid = null;
+$cid = null;
 $fullname = '';
-if($_GET['e']){
+if(isset($_GET['e'])){
+    $e = $_GET['e'];
     if(($e != 'a' && $e != 'c') || empty($e)){
-        $errorText = 'Invalid e character provided.';
+        $errorText = get_string('invalid_ecp', $p);
     } else {
-        if($_GET['uid']){
+        if(isset($_GET['uid'])){
+            $uid = $_GET['uid'];
             if(!preg_match("/^[0-9]*$/", $uid) || empty($uid)){
-                $errorText = 'Invalid user id provided.';
+                $errorText = get_string('invalid_uip', $p);
             } else {
-                if($_GET['cid']){
+                if(isset($_GET['cid'])){
+                    $cid = $_GET['cid'];
                     if(!preg_match("/^[0-9]*$/", $cid) || empty($cid)){
-                        $errorText = 'Invalid course id provided.';
+                        $errorText = get_string('invalid_cip', $p);
                     } else {
                         if($lib->check_coach_course($cid)){
+                            $title = get_string('activity_r', $p);
                             $context = context_course::instance($cid);
                             require_capability('local/activityrecord:teacher', $context);
                             $PAGE->set_context($context);
                             $PAGE->set_course($lib->get_course_record($cid));
                             $PAGE->set_url(new moodle_url("/local/activityrecord/activityrecord.php?cid=$cid&uid=$uid"));
-                            $PAGE->set_title('Activity Records');
-                            $PAGE->set_heading('Activity Records');
+                            $PAGE->set_title($title);
+                            $PAGE->set_heading($title);
                             $PAGE->set_pagelayout('incourse');
                             $fullname = $lib->check_learner_enrolment($cid, $uid);
                             if($fullname == false){
-                                $errorText = 'The user selected is not enrolled as a learner in the course selected.';
+                                $errorText = get_string('selected_neal', $p);
                             } else {
                                 $_SESSION['ar_records_uid'] = $uid;
                                 $_SESSION['ar_records_cid'] = $cid;
                             }
                         } else  {
-                            $errorText = 'You are not enrolled as a coach in the course provided.';
+                            $errorText = get_string('not_eacicp', $p);
                         }
                     }
                 } else {
-                    $errorText = 'No course id provided.';
+                    $errorText = get_string('no_cip', $p);
                 }
             }
         } else {
-            $errorText = 'No user id provided.';
+            $errorText = get_string('no_uip', $p);
         }
     }
+} else {
+    $errorText = get_string('no_evp', $p);
 }
 
 echo $OUTPUT->header();

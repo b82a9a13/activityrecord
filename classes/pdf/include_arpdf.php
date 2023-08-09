@@ -3,12 +3,12 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Apprentice</b></th>
-                <th><b>Review Date</b></th>
-                <th><b>Standard</b></th>
-                <th><b>Employer or Store</b></th>
-                <th><b>Coach</b></th>
-                <th><b>Manager or Mentor</b></th>
+                <th><b>'.get_string('apprentice', $p).'</b></th>
+                <th><b>'.get_string('review_date', $p).'</b></th>
+                <th><b>'.get_string('standard', $p).'</b></th>
+                <th><b>'.get_string('employer_os', $p).'</b></th>
+                <th><b>'.get_string('coach', $p).'</b></th>
+                <th><b>'.get_string('manager_om', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -24,28 +24,29 @@ $html = '
     </table>
 ';
 $pdf->writeHTML($html, true, false, false, false, '');
+$comments = get_string('comments', $p);
 $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th colspan="24"><b>Summary of progress</b></th>
+                <th colspan="24"><b>'.get_string('summary_op', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <th colspan="3"><b>Course % Progress to date</b></th>
+                <th colspan="3"><b>'.get_string('course_ptd', $p).'</b></th>
                 <td colspan="3">'.$data[6].'</td>
-                <th colspan="3"><b>Course % Expected Progress according to Training Plan</b></th>
+                <th colspan="3"><b>'.get_string('course_eptd', $p).'</b></th>
                 <td colspan="3">'.$data[7].'</td>
-                <th colspan="3"><b>Comments</b></th>
+                <th colspan="3"><b>'.$comments.'</b></th>
                 <td colspan="9">'.$data[8].'</td>
             </tr>
             <tr>
-                <th colspan="3"><b>OTJH Completed</b></th>
+                <th colspan="3"><b>'.get_string('otjh_c', $p).'</b></th>
                 <td colspan="3">'.$data[9].'</td>
-                <th colspan="3"><b>Expected OTJH as per Training Plan</b></th>
+                <th colspan="3"><b>'.get_string('expected_otjh_aptp', $p).'</b></th>
                 <td colspan="3">'.$data[10].'</td>
-                <th colspan="3"><b>Comments</b></th>
+                <th colspan="3"><b>'.$comments.'</b></th>
                 <td colspan="9">'.$data[11].'</td>
             </tr>
         </tbody>
@@ -56,7 +57,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Safeguarding</b></th>
+                <th><b>'.get_string('safeguarding', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -71,7 +72,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Health and Safety</b></th>
+                <th><b>'.get_string('health_as', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -86,7 +87,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Equality and Diversity</b></th>
+                <th><b>'.get_string('equality_ad', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -101,7 +102,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Information Advice and Guidance</b></th>
+                <th><b>'.get_string('information_aag', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -116,8 +117,8 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Recap on actions from last month</b></th>
-                <th><b>What impact has this had in your current job role/situation</b></th>
+                <th><b>'.get_string('recap_act_title', $p).'</b></th>
+                <th><b>'.get_string('what_impact_title', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -133,8 +134,8 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Details of Teaching & Learning activity undertaken today (include reference to modules and knowledge, skills & behaviours)</b></th>
-                <th><b>Modules and K,S,B</b></th>
+                <th><b>'.get_string('details_ot_title', $p).'</b></th>
+                <th><b>'.get_string('modules_aksb', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -150,7 +151,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>What impact will this have in your job role/situation</b></th>
+                <th><b>'.get_string('what_impactw_title', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -166,12 +167,12 @@ if($data[17] != '' || $data[18] != '' || $data[19] != '' || $data[20] != ''){
         <table border="1" cellpadding="2">
             <thead>
                 <tr>
-                    <th colspan="3"><b>Functional Skills Progress</b></th>
+                    <th colspan="3"><b>'.get_string('functional_sp', $p).'</b></th>
                 </tr>
                 <tr>
                     <th></th>
-                    <th><b>Learning today</b></th>
-                    <th><b>Target for next visit</b></th>
+                    <th><b>'.get_string('learning_t', $p).'</b></th>
+                    <th><b>'.get_string('target_fnv', $p).'</b></th>
                 </tr>
             </thead>
             <tbody>
@@ -179,7 +180,7 @@ if($data[17] != '' || $data[18] != '' || $data[19] != '' || $data[20] != ''){
     if($data[17] != '' || $data[18] != ''){
         $html .= '
                 <tr>
-                    <th><b>Math</b></th>
+                    <th><b>'.get_string('math', $p).'</b></th>
                     <td>'.$data[17].'</td>
                     <td>'.$data[18].'</td>
                 </tr>
@@ -188,7 +189,7 @@ if($data[17] != '' || $data[18] != '' || $data[19] != '' || $data[20] != ''){
     if($data[19] != '' || $data[20] != ''){
         $html .= '
                 <tr>
-                    <th><b>English</b></th>
+                    <th><b>'.get_string('english', $p).'</b></th>
                     <td>'.$data[19].'</td>
                     <td>'.$data[20].'</td>
                 </tr>
@@ -204,7 +205,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>ALN (Additional Learner Needs) Suppot delivered today</b></th>
+                <th><b>'.get_string('aln_title', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -219,7 +220,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Agreed actions & future skills development activity</b></th>
+                <th><b>'.get_string('agreed_act_title', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -234,7 +235,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Coach/Tutor Feedback</b></th>
+                <th><b>'.get_string('coach_otf', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -249,7 +250,7 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Apprentice Comments regarding their learning journey</b></th>
+                <th><b>'.get_string('apprentice_com_title', $p).'</b></th>
             </tr>
         </thead>
         <tbody>
@@ -263,7 +264,7 @@ $pdf->writeHTML($html, true, false, false, false, '');
 $html = '
     <table border="1" cellpadding="2">
         <tr>
-            <th><b>Employer comment on progress</b></th>
+            <th><b>'.get_string('employer_cop', $p).'</b></th>
             <td>MonthlyActivityRecord-'.str_replace(' ','_',$fullname).'-'.str_replace(' ','_',$coursename).'-'.$data[1].'-EmployerComment.pdf</td>
         </tr>
     </table>
@@ -272,11 +273,11 @@ $pdf->writeHTML($html, true, false, false, false, '');
 $html = '
     <table border="1" cellpadding="2">
         <tr>
-            <th><b>Date & time of next planned review</b></th>
+            <th><b>'.get_string('date_at_title', $p).'</b></th>
             <td>'.date('H:m d-m-Y',(new DateTime($data[31]))->format('U')).'</td>
         </tr>
         <tr>
-            <th><b>Remote / Face to Face</b></th>
+            <th><b>'.get_string('remote_ftf', $p).'</b></th>
             <td>'.$data[32].'</td>
         </tr>
     </table>
@@ -286,8 +287,8 @@ $html = '
     <table border="1" cellpadding="2">
         <thead>
             <tr>
-                <th><b>Learner Signature</b></th>
-                <th><b>Coach Signature</b></th>
+                <th><b>'.get_string('learner_s', $p).'</b></th>
+                <th><b>'.get_string('coach_s', $p).'</b></th>
             </tr>
         </thead>
         <tbody>';

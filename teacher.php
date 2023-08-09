@@ -11,7 +11,7 @@ require_login();
 $lib = new lib;
 $p = 'local_activityrecord';
 
-$title = 'Activity Record';
+$title = get_string('activity_rec', $p);
 $type = '';
 $enrolments = [];
 $id = null;
@@ -19,7 +19,7 @@ $errorText = '';
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     if(!preg_match("/^[0-9]*$/", $id) || empty($id)){
-        $errorText = 'Invalid Course id.';
+        $errorText = get_string('invalid_cip', $p);
     } else {
         if($lib->check_coach_course($id)){
             $context = context_course::instance($id);
@@ -27,7 +27,7 @@ if(isset($_GET['id'])){
             $PAGE->set_context($context);
             $PAGE->set_course($lib->get_course_record($id));
         } else {
-            $errorText = "You are not enrolled as a coach in the course provided.";
+            $errorText = get_string('not_eacicp', $p);
         }
     }
     $type = 'one';
@@ -39,7 +39,7 @@ if(isset($_GET['id'])){
         $PAGE->set_context($context);
         $type = 'all';
     } else {
-        $errorText .= 'No courses available.';
+        $errorText .= get_string('no_ca', $p);
     }
 }
 

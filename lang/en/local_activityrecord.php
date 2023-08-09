@@ -6,6 +6,7 @@
  */
 //A
     $string['activity_r'] = 'Activity Records';
+    $string['activity_rec'] = 'Activity Record';
     $string['apprentice'] = 'Apprentice';
     $string['apprentice_com_title'] = 'Apprentice comments regarding their learning journey';
     $string['apprentice_com'] = 'Apprentice comments';
@@ -27,6 +28,7 @@
     $string['choose_apdf'] = 'Choose a PDF';
     $string['coach_s'] = 'Coach Signature';
     $string['coach_sd'] = 'Coach Signature Date';
+    $string['coach_ntcs'] = 'Your coach needs to create a setup for you';
 //D
     $string['date_at_title'] = 'Date & time of next planned review';
     $string['delete'] = 'Delete';
@@ -36,10 +38,12 @@
     $string['edit'] = 'Edit';
     $string['employer_os'] = 'Employer or Store';
     $string['employer_cop'] = 'Employer comment on progress';
+    $string['employer_cde'] = "Employer comment doesn't exists";
     $string['expected_otjh_aptp'] = 'Expected OTJH as per Training Plan';
     $string['expected_otjh'] = 'Expected OTJH';
     $string['equality_ad'] = 'Equality and Diversity';
     $string['edit_ar'] = 'Edit Activity Record';
+    $string['english'] = 'English';
     $string['english_lt'] = 'English, Learning today';
     $string['english_t'] = 'English, Target';
 //F
@@ -55,8 +59,11 @@
 //I
     $string['information_aag'] = 'Information Advice and Guidance';
     $string['invalid_i'] = 'Invalid id';
+    $string['invalid_ip'] = 'Invalid id provided';
     $string['invalid_t'] = 'Invalid type';
     $string['invalid_cip'] = 'Invalid course id provided';
+    $string['invalid_ecp'] = 'Invalid e character provided';
+    $string['invalid_uip'] = 'Invalid user id provided';
 //J
 //L
     $string['learning_t'] = 'Learning today';
@@ -65,6 +72,7 @@
 //M
     $string['manager_om'] = 'Manager/Mentor';
     $string['modules_aksb'] = 'Modules and K,S,B';
+    $string['math'] = 'Math';
     $string['math_lt'] = 'Math, Learning today';
     $string['math_t'] = 'Math, Target';
 //N
@@ -73,7 +81,13 @@
     $string['new_record'] = 'New Record';
     $string['next_pr'] = 'Next planned review';
     $string['no_la'] = 'No learners available';
+    $string['no_ca'] = 'No courses available';
+    $string['no_ip'] = 'No id provided';
     $string['no_cip'] = 'No course id provided';
+    $string['no_uip'] = 'No user id provided';
+    $string['no_evp'] = 'No e value provided';
+    $string['not_eacicp'] = 'You are not enrolled as a coach in the course provided';
+    $string['need_tcs'] = 'You need to create your signature';
 //O
     $string['otj_a'] = 'Off The Job Activity';
     $string['otjh_c'] = 'OTJH Completed';
@@ -95,6 +109,8 @@
     $string['summary_op'] = 'Summary of progress';
     $string['safeguarding'] = 'Safeguarding';
     $string['submit'] = 'Submit';
+    $string['signature_c'] = 'You need to create your signature';
+    $string['selected_neal'] = 'The user selected is not enrolled as a learner in the course selected';
 //T
     $string['target_fnv'] = 'Target for next visit';
     $string['tracking'] = 'Tracking';

@@ -9,25 +9,29 @@ require_once(__DIR__.'/../../../../config.php');
 use local_activityrecord\lib;
 require_login();
 $lib = new lib;
+$p = 'local_activityrecord';
 
 $error = '';
-$id = $_GET['id'];
+$id = null;
 $cid = '';
 if(isset($_GET['id'])){
+    $id = $_GET['id'];
     if(!preg_match("/^[0-9]*$/",$id) || empty($id) || !isset($_SESSION['ar_lrecord_cid'])){
-        $error = 'Invalid id provided.';
+        $error = get_string('invalid_ip', $p);
     } else {
         $cid = $_SESSION['ar_lrecord_cid'];
         $context = context_course::instance($cid);
         require_capability('local/activityrecord:student', $context);
         if(!$lib->check_setup_exists_learner($cid)){
-            $error = 'Your coach needs to create a setup for you.';
+            $error = get_string('coach_ntcs', $p);
         } else {
             if(!$lib->check_learn_sign_exists($cid)){
-                $error = 'You need to create your signature.';
+                $error = get_string('need_tcs', $p);
             }
         }
     }
+} else {
+    $error = get_string('no_ip', $p);
 }
 
 if($error != ''){
@@ -48,7 +52,7 @@ if($error != ''){
     $pdf = new MYPDF('P', 'mm', 'A4', true, 'UTF-8', false);
     $coursename = $lib->get_course_fullname($cid);
     $pdf->addPage('P', 'A4');
-    $pdf->Cell(0, 0, "Activity Record - $fullname - $coursename", 0, 0, 'C', 0, '', 0);
+    $pdf->Cell(0, 0, get_string('activity_rec', $p)." - $fullname - $coursename", 0, 0, 'C', 0, '', 0);
     $pdf->Ln();
     $data = $lib->get_record_data_learn($id);
     include('./include_arpdf.php');
