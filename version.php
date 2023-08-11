@@ -11,6 +11,6 @@ $plugin->component = 'local_activityrecord';
 $plugin->version = 17;
 $plugin->requires = 2016052314;
 $plugin->dependencies = [
-    'local_trainingplan' => 12,
-    'local_hourslog' => 9
+    'local_trainingplan' => 23,
+    'local_hourslog' => 15
 ];
