@@ -171,9 +171,9 @@ if($data[17] != '' || $data[18] != '' || $data[19] != '' || $data[20] != ''){
                     <th'.$headStyle.' colspan="3"><b>'.get_string('functional_sp', $p).'</b></th>
                 </tr>
                 <tr>
-                    <th></th>
-                    <th><b>'.get_string('learning_t', $p).'</b></th>
-                    <th><b>'.get_string('target_fnv', $p).'</b></th>
+                    <th'.$headStyle.'></th>
+                    <th'.$headStyle.'><b>'.get_string('learning_t', $p).'</b></th>
+                    <th'.$headStyle.'><b>'.get_string('target_fnv', $p).'</b></th>
                 </tr>
             </thead>
             <tbody>
@@ -278,7 +278,7 @@ $html = '
             <td>'.date('H:m d-m-Y',(new DateTime($data[31]))->format('U')).'</td>
         </tr>
         <tr>
-            <th><b>'.get_string('remote_ftf', $p).'</b></th>
+            <th'.$headStyle.'><b>'.get_string('remote_ftf', $p).'</b></th>
             <td>'.$data[32].'</td>
         </tr>
     </table>

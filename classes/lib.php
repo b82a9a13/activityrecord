@@ -384,7 +384,7 @@ class lib{
             return false;
         }
         $docsid = $this->get_docsid($_SESSION['ar_records_uid'], $_SESSION['ar_records_cid']);
-        if(!$DB->record_exists_sql('SELECT * FROM {activityrecord_docs_info} WHERE docsid = ? AND id = ? AND reviewdate = ? AND learnsign IS NULL AND learnsigndate IS NULL AND ntasign IS NULL AND ntasigndate IS NULL AND employercomment IS NULL',[$docsid, $_SESSION['ar_records_rid'], $data[1]])){
+        if(!$DB->record_exists_sql('SELECT * FROM {activityrecord_docs_info} WHERE docsid = ? AND id = ? AND reviewdate = ? AND (learnsign IS NULL OR learnsigndate IS NULL OR ntasign IS NULL OR ntasigndate IS NULL OR employercomment IS NULL)',[$docsid, $_SESSION['ar_records_rid'], $data[1]])){
             return false;
         }
         $file = $DB->get_record_sql('SELECT employercomment FROM {activityrecord_docs_info} WHERE docsid = ? and id = ?',[$docsid, $_SESSION['ar_records_rid']])->employercomment;
@@ -543,7 +543,7 @@ class lib{
                 return false;
             } else {
                 $docsid = $this->get_docsid($uid, $cid);
-                if(!$DB->record_exists_sql('SELECT * FROM {activityrecord_docs_info} WHERE docsid = ? AND id = ? AND learnsign IS NULL AND learnsigndate IS NULL AND ntasign IS NULL AND ntasigndate IS NULL AND employercomment IS NULL',[$docsid, $_SESSION['ar_lrecords_rid']])){
+                if(!$DB->record_exists_sql('SELECT * FROM {activityrecord_docs_info} WHERE docsid = ? AND id = ? AND (learnsign IS NULL OR learnsigndate IS NULL OR ntasign IS NULL OR ntasigndate IS NULL OR employercomment IS NULL)',[$docsid, $_SESSION['ar_lrecords_rid']])){
                     return false;
                 }
                 $record = new stdClass();
