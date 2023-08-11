@@ -64,7 +64,7 @@ function editrecord(){
                 if(text['return']){
                     window.location.reload();
                 } else {
-                    errorTxt.innerText = 'Creation Error.'
+                    errorTxt.innerText = 'Update Error.'
                     errorTxt.style.display = 'block';
                 }
             }

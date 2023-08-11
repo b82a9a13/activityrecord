@@ -24,7 +24,7 @@ $('#activityrecord_content_div')[0].addEventListener('submit', (e)=>{
                 if(text['return']){
                     window.location.reload();
                 } else {
-                    errorTxt.innerText = 'Creation error.';
+                    errorTxt.innerText = 'Update error.';
                     errorTxt.style.display = 'block';
                 }
             }

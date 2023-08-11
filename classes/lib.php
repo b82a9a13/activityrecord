@@ -384,7 +384,7 @@ class lib{
             return false;
         }
         $docsid = $this->get_docsid($_SESSION['ar_records_uid'], $_SESSION['ar_records_cid']);
-        if($DB->record_exists_sql('SELECT * FROM {activityrecord_docs_info} WHERE docsid = ? AND id != ? AND reviewdate = ?',[$docsid, $_SESSION['ar_records_rid'], $data[1]])){
+        if(!$DB->record_exists_sql('SELECT * FROM {activityrecord_docs_info} WHERE docsid = ? AND id = ? AND reviewdate = ? AND learnsign IS NULL AND learnsigndate IS NULL AND ntasign IS NULL AND ntasigndate IS NULL AND employercomment IS NULL',[$docsid, $_SESSION['ar_records_rid'], $data[1]])){
             return false;
         }
         $file = $DB->get_record_sql('SELECT employercomment FROM {activityrecord_docs_info} WHERE docsid = ? and id = ?',[$docsid, $_SESSION['ar_records_rid']])->employercomment;
@@ -533,7 +533,7 @@ class lib{
     //Update activity record for a learner
     public function update_activity_record_learner($data){
         global $DB;
-        if(!isset($_SESSION['ar_lrecord_cid']) || !isset($_SESSION['ar_records_rid'])){
+        if(!isset($_SESSION['ar_lrecord_cid']) || !isset($_SESSION['ar_lrecords_rid'])){
             return false;
         } else {
             $uid = $this->get_userid();
@@ -543,6 +543,9 @@ class lib{
                 return false;
             } else {
                 $docsid = $this->get_docsid($uid, $cid);
+                if(!$DB->record_exists_sql('SELECT * FROM {activityrecord_docs_info} WHERE docsid = ? AND id = ? AND learnsign IS NULL AND learnsigndate IS NULL AND ntasign IS NULL AND ntasigndate IS NULL AND employercomment IS NULL',[$docsid, $_SESSION['ar_lrecords_rid']])){
+                    return false;
+                }
                 $record = new stdClass();
                 $record->id = $rid;
                 $record->docsid = $docsid;
