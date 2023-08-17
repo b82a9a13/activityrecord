@@ -107,7 +107,7 @@
 //S
     $string['standard'] = 'Standard';
     $string['summary_op'] = 'Summary of progress';
-    $string['safeguarding'] = 'Safeguarding';
+    $string['safeguarding'] = 'Safeguarding & Welfare';
     $string['submit'] = 'Submit';
     $string['signature_c'] = 'You need to create your signature';
     $string['selected_neal'] = 'The user selected is not enrolled as a learner in the course selected';
