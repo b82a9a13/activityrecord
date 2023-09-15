@@ -1,4 +1,8 @@
 <?php
+if(!isset($data)){
+    echo ("<h1>Error</h1>");
+    exit();
+}
 $headStyle = ' bgcolor="#95287A" style="color: #fafafa;"';
 $html = '
     <table border="1" cellpadding="2">

@@ -10,13 +10,13 @@ use stdClass;
 class lib{
     
     //Get the category id for apprenticeships
-    public function get_category_id(){
+    private function get_category_id(){
         global $DB;
         return $DB->get_record_sql('SELECT id FROM {course_categories} WHERE name = ?',['Apprenticeships'])->id;
     }
 
     //Get current userid
-    public function get_userid(){
+    private function get_userid(){
         global $USER;
         return $USER->id;
     }
@@ -136,7 +136,7 @@ class lib{
     }
 
     //Get docs id from a specific userid and courseid
-    public function get_docsid($uid, $cid){
+    private function get_docsid($uid, $cid){
         global $DB;
         return ($DB->record_exists('activityrecord_docs', [$DB->sql_compare_text('userid') => $uid, $DB->sql_compare_text('courseid') => $cid])) ? $DB->get_record_sql('SELECT id FROM {activityrecord_docs} WHERE userid = ? and courseid = ?',[$uid, $cid])->id : null;
     }
@@ -209,7 +209,7 @@ class lib{
     }
 
     //Get course progress to date for a specific userid and courseid
-    public function get_course_progress($uid, $cid, $totalmonths, $startdate){
+    private function get_course_progress($uid, $cid, $totalmonths, $startdate){
         global $DB;
         $record = $DB->get_record_sql('SELECT count(*) as total FROM {course_modules}
             INNER JOIN {course_modules_completion} ON {course_modules_completion}.coursemoduleid = {course_modules}.id
@@ -228,7 +228,7 @@ class lib{
     }
 
     //Get OTJH progress to date for a specific userid and courseid
-    public function get_otjh_progress($uid, $cid, $startdate, $otjhours, $totalmonths){
+    private function get_otjh_progress($uid, $cid, $startdate, $otjhours, $totalmonths){
         global $DB;
         $records = $DB->get_records_sql('SELECT {hourslog_hours_info}.id, {hourslog_hours_info}.duration as duration FROM {hourslog_hours} 
             INNER JOIN {hourslog_hours_info} ON {hourslog_hours_info}.hoursid = {hourslog_hours}.id
@@ -253,7 +253,7 @@ class lib{
     }
 
     //Return true or false depending on if actions were in the last record
-    public function check_prev_actions($uid, $cid){
+    private function check_prev_actions($uid, $cid){
         global $DB;
         $docsid = $this->get_docsid($uid, $cid);
         if($DB->record_exists('activityrecord_docs_info', [$DB->sql_compare_text('docsid') => $docsid])){
@@ -271,6 +271,14 @@ class lib{
             return false;
         }
     }
+    
+    //Get the name of a training plan from a plan file name
+    private function get_training_plan_name($file){
+        global $CFG;
+        $json = file_get_contents($CFG->dirroot.'/local/trainingplan/templates/json/'.$file);
+        $json = json_decode($json);
+        return $json->name;
+    }
 
     //Get default values for a activity record from a specfic userid and courseid
     public function get_doc_defualt($uid, $cid){
@@ -285,14 +293,6 @@ class lib{
             $this->get_otjh_progress($uid, $cid, $record->startdate, $record->otjhours, $record->totalmonths),
             $this->check_prev_actions($uid, $cid)
         ];
-    }
-
-    //Get the name of a training plan from a plan file name
-    public function get_training_plan_name($file){
-        global $CFG;
-        $json = file_get_contents($CFG->dirroot.'/local/trainingplan/templates/json/'.$file);
-        $json = json_decode($json);
-        return $json->name;
     }
 
     //Get all data for a specific form id
